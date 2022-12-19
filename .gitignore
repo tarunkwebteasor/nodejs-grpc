@@ -1,2 +1,4 @@
 gateway/node_modules/
+gateway/.env
 user/node_modules/
+user/.env
