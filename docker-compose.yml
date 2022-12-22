@@ -1,0 +1,23 @@
+version: '3'
+services:
+  node-gateway:
+    build: gateway/.
+    ports:
+      - 8080:8080
+    volumes:
+      - ./gateway:/gateway
+      - /gateway/node_modules
+    environment:
+      PORT: 8080
+  node-user-service:
+    container_name: user-service
+    build: user/.
+    ports:
+      - 8081:8081
+    volumes:
+      - ./user:/user
+      - /user/node_modules
+    environment:
+      PORT: 8081
+      DB: mongodb+srv://vercel-admin-user-6385ece8d761fb6b843fd0ef:DQKQ8u9NTnpaO7zZ@cluster0.4aue45b.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+      SALT: 10

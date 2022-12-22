@@ -4,13 +4,13 @@ const server = new grpc.Server();
 
 exports.startGrpcServer = function () {
   server.bindAsync(
-    `127.0.0.1:${process.env.PORT}`,
+    `0.0.0.0:${process.env.PORT}`,
     grpc.ServerCredentials.createInsecure(),
     (error, port) => {
       if (error) console.error(error);
       else {
         server.start();
-        console.log(`server running at 127.0.0.1:${port}`);
+        console.log(`server running at 0.0.0.0:${port}`);
       }
     }
   );
