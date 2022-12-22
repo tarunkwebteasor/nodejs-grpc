@@ -1,4 +1,6 @@
 gateway/node_modules/
 gateway/.env
+gateway/.dockerignore
 user/node_modules/
 user/.env
+user/.dockerignore
