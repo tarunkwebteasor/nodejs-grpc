@@ -19,6 +19,18 @@ const client = new UserService(
   grpc.credentials.createInsecure()
 );
 
+router.get("/", (req, res) => {
+  client.getUser({}, (err, msg) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ success: false, msg: "Something went wrong" });
+    } else {
+      return res
+        .status(200)
+        .json({ success: true, msg: msg });
+    }
+  });
+});
 
 router.post("/register", async (req, res) => {
   const { name, email, password } = req.body;

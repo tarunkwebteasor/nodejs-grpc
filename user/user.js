@@ -7,7 +7,7 @@ mongoose.connect(process.env.DB);
 
 exports.createUser = function createUser(call, cb) {
   const { name, email, password } = call.request.user;
-  
+
   bcrypt.genSalt(parseInt(process.env.SALT), (err, salt) => {
     if (err) {
       return cb(err, null);
@@ -30,9 +30,14 @@ exports.createUser = function createUser(call, cb) {
         };
         return cb(null, response);
       }).catch((err) => console.log(err));
-        
     });
   });
+};
+
+exports.getUser = function getUser(_, cb) {
+  Users.find()
+  .then((user) => {cb(null, {"user": user})})
+  .catch((err) => {cb(err, null)});
 };
 
 

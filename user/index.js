@@ -3,7 +3,7 @@ const protoLoader = require("@grpc/proto-loader");
 const grpc = require("@grpc/grpc-js");
 require('dotenv').config();
 const PROTO_PATH = __dirname + "/protos/user.proto";
-const { createUser } = require("./user");
+const { createUser, getUser } = require("./user");
 
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
   keepCase: true,
@@ -18,5 +18,6 @@ startGrpcServer();
 const server = getGrpcServer();
 
 server.addService(user_proto.UserService.service, {
-  createUser
+  createUser,
+  getUser
 });
