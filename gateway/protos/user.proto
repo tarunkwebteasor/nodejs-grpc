@@ -12,7 +12,7 @@ message CreateUserRequest{
 }
 
 message CreateUserResponse{
-    String id = 1;
+    string id = 1;
 }
 
 message GetUserRequest{}
